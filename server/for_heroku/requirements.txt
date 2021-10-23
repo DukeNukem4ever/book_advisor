@@ -1,0 +1,10 @@
+django
+gunicorn
+django-heroku
+djangorestframework
+coverage
+django-webpack-loader
+asgiref
+whitenoise
+pytz
+django-cors-headers
