@@ -11,11 +11,19 @@ from sklearn.metrics.pairwise import cosine_similarity
 # TODO: fill dataset here
 # Dataset will be created in /home/jupyter/mnt/datasets/DATASET_NAME
 
-categ_1 = pd.read_csv('cat_1.csv', sep=';',encoding='windows-1251')
-categ_2 = pd.read_csv('cat_2.csv', sep=';',encoding='windows-1251')
-categ_3 = pd.read_csv('cat_3.csv', sep=';',encoding='windows-1251')
+import os
 
-categs_combined = pd.concat([categ_1,categ_2,categ_3])
+def get_relatife_file_name(name_file):
+    script_dir = os.path.dirname(__file__)
+    return os.path.join(script_dir, name_file)
+
+
+
+categ_1 = pd.read_csv(get_relatife_file_name('cat_1.csv'), sep=';',encoding='windows-1251')
+# categ_2 = pd.read_csv('cat_2.csv', sep=';',encoding='windows-1251')
+# categ_3 = pd.read_csv('cat_3.csv', sep=';',encoding='windows-1251')
+
+categs_combined = pd.concat([categ_1])#,categ_2,categ_3])
 
 categs_combined['aut'] = categs_combined['aut'].fillna('Неизвестен')
 categs_combined['title'] = categs_combined['title'].fillna('Неизестно')
@@ -28,59 +36,60 @@ categs_combined['person'] = categs_combined['person'].fillna('Неизвесте
 categs_combined['serial'] = categs_combined['serial'].fillna('Неизвестен')
 categs_combined['ager'] = categs_combined['ager'].fillna('Неизвестен')
 
-fund_1 = pd.read_csv('fund_1.csv', sep=';',encoding='windows-1251')
+fund_1 = pd.read_csv(get_relatife_file_name('fund_1.csv'), sep=';',encoding='windows-1251')
 
-fund_2 = pd.read_csv('fund_2.csv', sep=';',encoding='windows-1251')
-
-fund_3 = pd.read_csv('fund_3.csv', sep=';',encoding='windows-1251')
-
-fund_4 = pd.read_csv('fund_4.csv', sep=';',encoding='windows-1251')
-
-fund_5 = pd.read_csv('fund_5.csv', sep=';',encoding='windows-1251')
-
-fund_6 = pd.read_csv('fund_6.csv', sep=';',encoding='windows-1251')
-
-fund_7 = pd.read_csv('fund_7.csv', sep=';',encoding='windows-1251')
-
-fund_8 = pd.read_csv('fund_8.csv', sep=';',encoding='windows-1251')
-
-fund_9 = pd.read_csv('fund_9.csv', sep=';',encoding='windows-1251')
-
-fund_10 = pd.read_csv('fund_10_fix.csv', sep=';',encoding='windows-1251')
-fund_10 = fund_10.drop(['Unnamed: 8','Unnamed: 9'],axis=1)
-
-fund_11 = pd.read_csv('fund_11_fix.csv', sep=';',encoding='windows-1251')
-fund_11 = fund_11.drop(['Unnamed: 8','Unnamed: 9'],axis=1)
-
-fund_12 = pd.read_csv('fund_12_fix.csv', sep=';',encoding='windows-1251')
-fund_12 = fund_12.drop(['Unnamed: 8','Unnamed: 9'],axis=1)
-
-fund_13 = pd.read_csv('fund_13_fix.csv', sep=';',encoding='windows-1251')
-fund_13 = fund_13.drop(['Unnamed: 8','Unnamed: 9'],axis=1)
-
-fund_14 = pd.read_csv('fund_14.csv', sep=';',encoding='windows-1251')
-
-fund_15 = pd.read_csv('fund_15.csv', sep=';',encoding='windows-1251')
-
-fund_16 = pd.read_csv('fund_16.csv', sep=';',encoding='windows-1251')
+# fund_2 = pd.read_csv('fund_2.csv', sep=';',encoding='windows-1251')
+#
+# fund_3 = pd.read_csv('fund_3.csv', sep=';',encoding='windows-1251')
+#
+# fund_4 = pd.read_csv('fund_4.csv', sep=';',encoding='windows-1251')
+#
+# fund_5 = pd.read_csv('fund_5.csv', sep=';',encoding='windows-1251')
+#
+# fund_6 = pd.read_csv('fund_6.csv', sep=';',encoding='windows-1251')
+#
+# fund_7 = pd.read_csv('fund_7.csv', sep=';',encoding='windows-1251')
+#
+# fund_8 = pd.read_csv('fund_8.csv', sep=';',encoding='windows-1251')
+#
+# fund_9 = pd.read_csv('fund_9.csv', sep=';',encoding='windows-1251')
+#
+# fund_10 = pd.read_csv('fund_10_fix.csv', sep=';',encoding='windows-1251')
+# fund_10 = fund_10.drop(['Unnamed: 8','Unnamed: 9'],axis=1)
+#
+# fund_11 = pd.read_csv('fund_11_fix.csv', sep=';',encoding='windows-1251')
+# fund_11 = fund_11.drop(['Unnamed: 8','Unnamed: 9'],axis=1)
+#
+# fund_12 = pd.read_csv('fund_12_fix.csv', sep=';',encoding='windows-1251')
+# fund_12 = fund_12.drop(['Unnamed: 8','Unnamed: 9'],axis=1)
+#
+# fund_13 = pd.read_csv('fund_13_fix.csv', sep=';',encoding='windows-1251')
+# fund_13 = fund_13.drop(['Unnamed: 8','Unnamed: 9'],axis=1)
+#
+# fund_14 = pd.read_csv('fund_14.csv', sep=';',encoding='windows-1251')
+#
+# fund_15 = pd.read_csv('fund_15.csv', sep=';',encoding='windows-1251')
+#
+# fund_16 = pd.read_csv('fund_16.csv', sep=';',encoding='windows-1251')
 
 funds_combined = pd.concat(
     [fund_1,
-     fund_2,
-     fund_3,
-     fund_4,
-     fund_5,
-     fund_6,
-     fund_7,
-     fund_8,
-     fund_9,
-     fund_10,
-     fund_11,
-     fund_12,
-     fund_13,
-     fund_14,
-     fund_15,
-     fund_16])
+     # fund_2,
+     # fund_3,
+     # fund_4,
+     # fund_5,
+     # fund_6,
+     # fund_7,
+     # fund_8,
+     # fund_9,
+     # fund_10,
+     # fund_11,
+     # fund_12,
+     # fund_13,
+     # fund_14,
+     # fund_15,
+     # fund_16
+     ])
 
 funds_combined = funds_combined.rename(columns={'Unnamed: 6':'siglaID_2',
                                'Unnamed: 7':'inventoryNumber_2',
@@ -94,40 +103,41 @@ funds_combined['inventoryNumber_2'] = funds_combined['inventoryNumber_2'].fillna
 #funds_combined['trackIndex_2'] = funds_combined['trackIndex_2'].fillna('Нет')
 
 
-circ_1 = pd.read_csv('circulaton_1.csv', sep=';',encoding='windows-1251')
-circ_2 = pd.read_csv('circulaton_2.csv', sep=';',encoding='windows-1251')
-circ_3 = pd.read_csv('circulaton_3.csv', sep=';',encoding='windows-1251')
-circ_4 = pd.read_csv('circulaton_4.csv', sep=';',encoding='windows-1251')
-circ_5 = pd.read_csv('circulaton_5.csv', sep=';',encoding='windows-1251')
-circ_6 = pd.read_csv('circulaton_6.csv', sep=';',encoding='windows-1251')
-circ_7 = pd.read_csv('circulaton_7.csv', sep=';',encoding='windows-1251')
-circ_8 = pd.read_csv('circulaton_8.csv', sep=';',encoding='windows-1251')
-circ_9 = pd.read_csv('circulaton_9.csv', sep=';',encoding='windows-1251')
-circ_10 = pd.read_csv('circulaton_10.csv', sep=';',encoding='windows-1251')
-circ_11 = pd.read_csv('circulaton_11.csv', sep=';',encoding='windows-1251')
-circ_12 = pd.read_csv('circulaton_12.csv', sep=';',encoding='windows-1251')
-circ_13 = pd.read_csv('circulaton_13.csv', sep=';',encoding='windows-1251')
-circ_14 = pd.read_csv('circulaton_14.csv', sep=';',encoding='windows-1251')
-circ_15 = pd.read_csv('circulaton_15.csv', sep=';',encoding='windows-1251')
-circ_16 = pd.read_csv('circulaton_16.csv', sep=';',encoding='windows-1251')
+circ_1 = pd.read_csv(get_relatife_file_name('circulaton_1.csv'), sep=';',encoding='windows-1251')
+# circ_2 = pd.read_csv('circulaton_2.csv', sep=';',encoding='windows-1251')
+# circ_3 = pd.read_csv('circulaton_3.csv', sep=';',encoding='windows-1251')
+# circ_4 = pd.read_csv('circulaton_4.csv', sep=';',encoding='windows-1251')
+# circ_5 = pd.read_csv('circulaton_5.csv', sep=';',encoding='windows-1251')
+# circ_6 = pd.read_csv('circulaton_6.csv', sep=';',encoding='windows-1251')
+# circ_7 = pd.read_csv('circulaton_7.csv', sep=';',encoding='windows-1251')
+# circ_8 = pd.read_csv('circulaton_8.csv', sep=';',encoding='windows-1251')
+# circ_9 = pd.read_csv('circulaton_9.csv', sep=';',encoding='windows-1251')
+# circ_10 = pd.read_csv('circulaton_10.csv', sep=';',encoding='windows-1251')
+# circ_11 = pd.read_csv('circulaton_11.csv', sep=';',encoding='windows-1251')
+# circ_12 = pd.read_csv('circulaton_12.csv', sep=';',encoding='windows-1251')
+# circ_13 = pd.read_csv('circulaton_13.csv', sep=';',encoding='windows-1251')
+# circ_14 = pd.read_csv('circulaton_14.csv', sep=';',encoding='windows-1251')
+# circ_15 = pd.read_csv('circulaton_15.csv', sep=';',encoding='windows-1251')
+# circ_16 = pd.read_csv('circulaton_16.csv', sep=';',encoding='windows-1251')
 
 circs_combined = pd.concat(
     [circ_1,
-     circ_2,
-     circ_3,
-     circ_4,
-     circ_5,
-     circ_6,
-     circ_7,
-     circ_8,
-     circ_9,
-     circ_10,
-     circ_11,
-     circ_12,
-     circ_13,
-     circ_14,
-     circ_15,
-     circ_16])
+     # circ_2,
+     # circ_3,
+     # circ_4,
+     # circ_5,
+     # circ_6,
+     # circ_7,
+     # circ_8,
+     # circ_9,
+     # circ_10,
+     # circ_11,
+     # circ_12,
+     # circ_13,
+     # circ_14,
+     # circ_15,
+     # circ_16
+     ])
 
 circs_combined = circs_combined.drop(['Unnamed: 8'],axis=1)
 combiner = circs_combined['catalogueRecordID'].value_counts().to_dict()
