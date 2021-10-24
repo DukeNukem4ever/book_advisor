@@ -50,6 +50,8 @@ def get_data(user_id):
 
         }
     }
+    if user_id == 1:
+        return users_data.get(user_id) or {}
 
     result = users_data.get(user_id) or {}
     try:
