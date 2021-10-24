@@ -5,6 +5,7 @@ FakeAPI модели
 from django.http import JsonResponse
 
 
+
 def get_recomend_and_history(request):
     """
     fakeApi
@@ -50,4 +51,12 @@ def get_data(user_id):
         }
     }
 
-    return users_data.get(user_id) or {}
+    result = users_data.get(user_id) or {}
+    try:
+        from .advisor_model import search
+        res_search = search(user_id)
+        result = res_search
+    except Exception as e:
+        result.update({'exception': str(e)})
+
+    return result or {}
